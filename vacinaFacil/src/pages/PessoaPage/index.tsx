@@ -1,9 +1,10 @@
 import React from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, ImageBackground, ScrollView, Text, View } from "react-native";
 import { styles } from "./style";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import banner from "../../assets/banner.png";
 
 const Cards = [
   {
@@ -42,7 +43,6 @@ const Cards = [
     data: "Segunda à sexta",
     horario: "08:30 às 19:00",
   },
-
   {
     id: 5,
     title: "VacinaFácil - Pessoas",
@@ -55,7 +55,20 @@ const Cards = [
 
 export const PessoaPage = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <View style={styles.banner}>
+        <ImageBackground
+          source={banner}
+          style={styles.imagemBanner}
+          resizeMode="cover"
+        >
+          <View style={styles.bannerSombra}></View>
+          <Text style={styles.tituloBanner}>VacinaFácil</Text>
+          <Text style={styles.subtituloBanner}>
+            Acompanhe seus agendamentos!
+          </Text>
+        </ImageBackground>
+      </View>
       <FlatList
         data={Cards}
         keyExtractor={(item) => item.id.toString()}
@@ -113,6 +126,6 @@ export const PessoaPage = () => {
           </View>
         )}
       />
-    </View>
+    </ScrollView>
   );
 };
