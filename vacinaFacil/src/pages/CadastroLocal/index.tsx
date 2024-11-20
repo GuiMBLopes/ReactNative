@@ -1,12 +1,14 @@
-import { ScrollView, View } from "react-native";
+import { FlatList, ScrollView, View } from "react-native";
 import { Text } from "react-native";
 import { styles } from "./style";
 import { CardsCadastroLocal } from "../../components/CardsCadastroLocal";
 import { InputsCadastroLocal } from "../../components/InputsCadastroLocal";
 import { CheckBoxComp } from "../../components/CheckBoxComp";
 import { ButtonCadastroLocal } from "../../components/ButtonCadastroLocal";
-import { useState } from "react";
-import { inserir } from "../../services/serviceApi";
+import { useEffect, useState } from "react";
+import { buscar, deletarApi, inserir } from "../../services/serviceApi";
+import { Cards } from "../../@types/api";
+
 
 export const CadastroLocal = () => {
   const [rua, setRua] = useState<string>("");
@@ -19,9 +21,10 @@ export const CadastroLocal = () => {
   const [horaInicio, setHoraInicio] = useState<string>("");
   const [horaFim, setHoraFim] = useState<string>("");
   const [tipo, setTipo] = useState<string>("");
-  const [isCheckedAnimal, setIsCheckedAnimal] = useState(false)
-  const [isCheckedCrianca, setIsCheckedCrianca] = useState(false)
-  const [isCheckedIdoso, setIsCheckedIdoso] = useState(false)
+  const [isCheckedAnimal, setIsCheckedAnimal] = useState(false);
+  const [isCheckedCrianca, setIsCheckedCrianca] = useState(false);
+  const [isCheckedIdoso, setIsCheckedIdoso] = useState(false);
+  const [info, setInfo] = useState<Cards[]>([])
   
   const cleanInput = () => {
     setRua("");
@@ -35,8 +38,8 @@ export const CadastroLocal = () => {
     setHoraFim("");
     setTipo("");
     setIsCheckedAnimal(false);
-    setIsCheckedCrianca(false)
-    setIsCheckedIdoso(false)
+    setIsCheckedCrianca(false);
+    setIsCheckedIdoso(false);
   };
 
   const handleClick = () => {
@@ -54,46 +57,63 @@ export const CadastroLocal = () => {
     };
 
     console.log(dados);
-
     inserir(dados)
-
     cleanInput();
+
+    setInterval(() => {
+      carregarDados()
+    }, 1000);
   };
 
-
-  const hadleCheckAnimal = (value:boolean) =>{
+  const hadleCheckAnimal = (value: boolean) => {
     if (!isCheckedAnimal) {
-      setIsCheckedAnimal(true)
-      setTipo('animal')
-      setIsCheckedCrianca(false)
-      setIsCheckedIdoso(false)
-
-    }else{
-      setIsCheckedAnimal(false)
-      setTipo('')
-    }
-  }
-  const hadleCheckCrianca = (value:boolean) =>{
-    if (!isCheckedCrianca) {
-      setIsCheckedCrianca(true)
-      setTipo('crianca')
-      setIsCheckedAnimal(false)
-      setIsCheckedIdoso(false)
-    }else{
-      setIsCheckedCrianca(false)
-      setTipo('')
-    }
-  }
-  const hadleCheckIdoso = (value:boolean) =>{
-    if (!isCheckedIdoso) {
-      setIsCheckedIdoso(true)
-      setTipo('idoso')
+      setIsCheckedAnimal(true);
+      setTipo("animal");
+      setIsCheckedCrianca(false);
+      setIsCheckedIdoso(false);
+    } else {
       setIsCheckedAnimal(false);
-      setIsCheckedCrianca(false)
-    }else{
-      setIsCheckedIdoso(false)
-      setTipo('')
+      setTipo("");
     }
+  };
+  const hadleCheckCrianca = (value: boolean) => {
+    if (!isCheckedCrianca) {
+      setIsCheckedCrianca(true);
+      setTipo("crianca");
+      setIsCheckedAnimal(false);
+      setIsCheckedIdoso(false);
+    } else {
+      setIsCheckedCrianca(false);
+      setTipo("");
+    }
+  };
+  const hadleCheckIdoso = (value: boolean) => {
+    if (!isCheckedIdoso) {
+      setIsCheckedIdoso(true);
+      setTipo("idoso");
+      setIsCheckedAnimal(false);
+      setIsCheckedCrianca(false);
+    } else {
+      setIsCheckedIdoso(false);
+      setTipo("");
+    }
+  };
+
+  
+  const carregarDados = async () =>{
+    const dados = await buscar()
+    setInfo(dados)
+  }
+
+  useEffect(() => {
+    carregarDados()
+  }, []);
+
+  const deletar = (id:string) => {
+    deletarApi(id)
+    setInterval(() => {
+      carregarDados()
+    }, 1000);
   }
 
   return (
@@ -103,9 +123,21 @@ export const CadastroLocal = () => {
         <View style={styles.line} />
         <View style={styles.main}>
           <View style={styles.boxCheckbox}>
-            <CheckBoxComp propsLabel="Animais" value={isCheckedAnimal} onChange={hadleCheckAnimal} />
-            <CheckBoxComp propsLabel="Crianças" value={isCheckedCrianca} onChange={hadleCheckCrianca}/>
-            <CheckBoxComp propsLabel="Idosos" value={isCheckedIdoso} onChange={hadleCheckIdoso} />
+            <CheckBoxComp
+              propsLabel="Animais"
+              value={isCheckedAnimal}
+              onChange={hadleCheckAnimal}
+            />
+            <CheckBoxComp
+              propsLabel="Crianças"
+              value={isCheckedCrianca}
+              onChange={hadleCheckCrianca}
+            />
+            <CheckBoxComp
+              propsLabel="Idosos"
+              value={isCheckedIdoso}
+              onChange={hadleCheckIdoso}
+            />
           </View>
 
           <InputsCadastroLocal
@@ -182,7 +214,21 @@ export const CadastroLocal = () => {
         <Text style={styles.titulo}>Apagar locais</Text>
         <View style={styles.line} />
         <View style={styles.main}>
-          <CardsCadastroLocal />
+          <FlatList
+            data={info}
+            keyExtractor={(info) => info.id}
+            renderItem={({ item }) => (
+              <CardsCadastroLocal
+                bairro={item.bairro}
+                rua={item.rua}
+                numero={item.numero}
+                tipo={item.tipo}
+                dataFim={item.dataFim}
+                dataInicio={item.dataInicio}
+                handleFunction={()=>{deletar(item.id)}}
+              />
+            )}
+          />
         </View>
       </View>
     </ScrollView>
