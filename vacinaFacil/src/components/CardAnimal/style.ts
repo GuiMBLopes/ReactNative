@@ -1,0 +1,65 @@
+import { StyleSheet } from "react-native";
+
+export const style = StyleSheet.create({
+    container:{
+        flex:1,
+        backgroundColor:"#247BA0",
+        justifyContent:"center",
+        alignItems:"center",
+        paddingTop:20,
+    },
+    card:{
+        backgroundColor:"#FFF",
+        width:"90%",
+        height:200,
+        borderRadius:10,
+        display:"flex"
+    },
+    cardText:{
+        width:"80%"
+    },
+    title:{
+        fontSize:20,
+        paddingLeft:10,
+        fontFamily:"Montserrat",
+        color:"#1B98E0",
+        fontWeight:"bold"
+    },
+    subTitle:{
+        fontSize:15,
+        paddingLeft:20,
+        paddingBottom:10,
+        fontFamily:"Nunito",
+        fontWeight:"bold"
+    },
+    local:{
+        width:"90%",
+        flexDirection:"row",
+        paddingLeft:10
+
+    },
+    localText:{
+        fontSize:20,
+        color:"#1B98E0",
+        fontWeight:"bold"
+    },
+    row:{
+        flexDirection:"row",
+        top:15,
+        justifyContent:"space-between"
+    },
+    rowDate:{
+        width:"60%",
+        paddingLeft:10,
+    },
+    rowDateText:{
+        fontSize:12,
+    },
+    rowTime:{
+        width:"40%",
+        alignItems:"center"
+    },
+    rowTimeText:{
+        fontSize:12
+    }
+})
