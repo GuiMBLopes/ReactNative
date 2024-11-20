@@ -3,12 +3,14 @@ import { style } from "./style";
 import { Icon } from "react-native-elements";
 
 export const AnimalPage = () => {
+
+
   return (
     <>
         <View style={style.container}>
           <View style={style.card}>
             <View style={style.cardText}>
-              <Text style={style.title}>Titulo</Text>
+              <Text style={style.title}>titulo</Text>
               <Text style={style.subTitle}>Descrição</Text>
             </View>
             <View style={style.local}>
