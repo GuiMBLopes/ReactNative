@@ -26,7 +26,7 @@ export const Header = () => {
         />
       </TouchableOpacity>
       <View style={{flexDirection:"row"}}>
-        <Text style={{color:"#fff", top:30, paddingRight:5}}>Vacina Facil</Text>
+        <Text style={{color:"#fff", top:30, paddingRight:5}}>VacinaFácil</Text>
         <Image source={Logo} style={style.logo} />
       </View>
       <TouchableOpacity onPress={navigateToCasdastroLocal}>
