@@ -1,52 +1,90 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1B425A", // Fundo escuro
-    padding: 100,
+    backgroundColor: "#247BA0",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: 1,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#62C2E4", // Azul claro
+
+  header: {    
+    width: "300%",
+    height: "10%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 20,
+    marginBottom: 100,
+    borderBottomWidth: 1,
+    backgroundColor: "#13293D",
+    elevation: 5,
+  },
+
+  logo: {
+    width: 50, 
+    height: 50,
+    left: -100,
+  },
+
+  appName: {
     textAlign: "center",
+    marginLeft: -50, 
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+
+  formContainer: {
+    backgroundColor: "#FFF",
+    borderRadius: 15,
+    borderWidth: 2,
+    borderColor: "#13293D",
+    padding: 20,
+    width: "90%",
+    alignItems: "center",
+  },
+
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#13293D",
     marginBottom: 20,
   },
+
   input: {
-    backgroundColor: "#FFFFFF", // Fundo branco para os inputs
+    backgroundColor: "#F0F0F0",
     borderWidth: 1,
-    borderColor: "#62C2E4", // Azul claro
-    borderRadius: 8,
+    borderColor: "#13293D",
+    borderRadius: 10,
     padding: 10,
-    marginBottom: 15,
-    color: "#1B425A", // Texto escuro dentro dos inputs
-    fontSize: 16,
+    marginBottom: 10,
+    width: "100%",
   },
+
   picker: {
-    backgroundColor: "#FFFFFF", // Fundo branco para o Picker
+    backgroundColor: "#F0F0F0",
     borderWidth: 1,
-    borderColor: "#62C2E4", // Azul claro
-    borderRadius: 8,
+    borderColor: "#13293D",
+    borderRadius: 10,
+    width: "100%",
     marginBottom: 15,
   },
+
   button: {
-    backgroundColor: "#77D353", // Verde para os botões
+    backgroundColor: "#13293D",
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 10,
+    width: "100%",
     alignItems: "center",
     marginTop: 20,
   },
+  
   buttonText: {
-    color: "#FFFFFF", // Texto branco nos botões
+    color: "#FFF",
     fontSize: 16,
     fontWeight: "bold",
-  },
-  logo: {
-    width: 150, // Ajuste conforme necessário
-    height: 150,
-    alignSelf: "center",
-    marginTop: 20,
   },
 });
 
