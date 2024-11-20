@@ -4,14 +4,14 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#247BA0",
-    paddingTop: 50,
+    paddingTop: 40,
   },
 
   banner: {
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
-    height: 120,
+    height: 140,
     margin: 20,
     borderRadius: 30,
     overflow: "hidden",
@@ -74,14 +74,14 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  title: {
+  tituloCards: {
     fontSize: 18,
     fontWeight: "900",
     color: "#006494",
     marginBottom: 5,
   },
 
-  subtitle: {
+  subtituloCards: {
     fontSize: 14,
     color: "#000",
     marginBottom: 15,

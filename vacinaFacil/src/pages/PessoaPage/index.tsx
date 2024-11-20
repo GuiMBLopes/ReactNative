@@ -76,8 +76,8 @@ export const PessoaPage = () => {
           <View style={styles.containerCards}>
             <View style={styles.cards}>
               <View style={styles.cardsInfos}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.subtitle}>{item.subtitle}</Text>
+                <Text style={styles.tituloCards}>{item.title}</Text>
+                <Text style={styles.subtituloCards}>{item.subtitle}</Text>
                 <View style={styles.localContainer}>
                   <Entypo
                     name="location-pin"
