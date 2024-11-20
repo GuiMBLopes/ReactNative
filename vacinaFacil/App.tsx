@@ -1,4 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
+
+import { StyleSheet, Text, View } from 'react-native';
+import { CadastroLocal } from './src/pages/CadastroLocal';
 import { Login } from './src/pages/Login';
 import React from 'react';
 
