@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import styles from "./style";
 import { Picker } from "@react-native-picker/picker";
+import { Header } from "../../components/HeaderCadastro";
 
-const CadastroUser = () => {
+ export const  CadastroUser = () => {
   const [tipo, setTipo] = useState("Pessoa");
   const [form, setForm] = useState({
     nome: "",
@@ -51,15 +52,9 @@ const CadastroUser = () => {
   };
 
   return (
+    <>
+    <Header/>
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          source={require("../../../assets/logocadastro.png")}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        <Text style={styles.appName}>VacinaFácil</Text>
-      </View>
       <View style={styles.formContainer}>
         <Text style={styles.title}>Cadastro de Usuário</Text>
         <Picker
@@ -154,6 +149,7 @@ const CadastroUser = () => {
         </TouchableOpacity>
       </View>
     </View>
+    </>
   );
 };
 

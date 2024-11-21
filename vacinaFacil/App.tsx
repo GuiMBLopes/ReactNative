@@ -10,8 +10,8 @@ import CadastroUser from "./src/pages/CadastroUser";
 export default function App() {
   return (
     <>
-      <StatusBar style="light" backgroundColor="#247BA0" />
-      <Routers />
+      <StatusBar style="light" backgroundColor="#13293D" />
+      <Routers/>
     </>
   );
 }

@@ -8,6 +8,7 @@ import { ButtonCadastroLocal } from "../../components/ButtonCadastroLocal";
 import { useEffect, useState } from "react";
 import { buscar, deletarApi, inserir } from "../../services/serviceApi";
 import { Cards } from "../../@types/api";
+import { Header } from "../../components/HeaderCadastro";
 
 
 export const CadastroLocal = () => {
@@ -174,6 +175,7 @@ export const CadastroLocal = () => {
 
   return (
     <ScrollView style={{ backgroundColor: "#247BA0" }}>
+      <Header/>
       <View style={styles.container}>
         <Text style={styles.titulo}>Cadastre novos locais</Text>
         <View style={styles.line} />

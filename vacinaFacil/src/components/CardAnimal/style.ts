@@ -13,7 +13,9 @@ export const style = StyleSheet.create({
         width:"90%",
         height:200,
         borderRadius:10,
-        display:"flex"
+        display:"flex",
+        elevation: 8,
+        marginBottom:10
     },
     cardText:{
         width:"80%"
