@@ -8,5 +8,12 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     fontSize: 14,
       boxShadow: '1px 1px 4px rgba(0, 0, 0.1, 0.3)'
-  }
+  },
+
+  label:{
+  color: "#fff",
+  fontSize: 15,
+  fontWeight: "bold",
+  },
+
 });

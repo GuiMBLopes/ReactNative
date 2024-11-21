@@ -13,58 +13,58 @@ export const Login = () => {
   const handleLogin = () => {
   };
 
-const handlePassword = (value: string) => {
+  const handlePassword = (value: string) => {
     setPassword(value);
   };
 
   const handleEmail = (value: string) => {
     setEmail(value);
   };
-  
-return (
+
+  return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      
-        <View style={styles.container}>
- 
-       
+
+      <View style={styles.container}>
+
+
         <Image style={styles.logo} source={Logo} />
 
-           <View style={styles.inserir}> 
-           <TextInputField
-           propsLabel="Email"
+        <View style={styles.inserir}>
+          <TextInputField
+            propsLabel="Email"
             placeHolder="Digite seu email"
             valueInput={email}
             hadleFunctionInput={handleEmail}
           />
-          </View>
+        </View>
 
-          <View style={styles.senha}>
+        <View style={styles.senha}>
           <TextInputField
-          propsLabel="Senha"
+            propsLabel="Senha"
             placeHolder="Digite sua senha"
             valueInput={password}
             hadleFunctionInput={handlePassword}
             typeInput={true}
           />
-            </View>
- 
-           <ButtonType
-            title="Entrar"
-            handleFunction={handleLogin}
-            propsBackgroundColor="#13293D" 
-          />
+        </View>
 
-         <View>
-         <Text style={styles.texto}>Não tem conta?</Text>
-         </View>
+        <ButtonType
+          title="Entrar"
+          handleFunction={handleLogin}
+          propsBackgroundColor="#13293D"
+        />
 
-       <View style={styles.buttonEntrar}>
-      <TouchableOpacity style={styles.buttonEntrar} >
-        <Text style={styles.buttonEntrar}>Clique aqui</Text>
-      </TouchableOpacity>
-    </View>
-        
-   </View>
+        <View>
+          <Text style={styles.texto}>Não tem conta?</Text>
+        </View>
+
+        <View style={styles.boxButton}>
+          <TouchableOpacity style={styles.buttonEntrar} >
+            <Text style={styles.buttonText}>Clique aqui</Text>
+          </TouchableOpacity>
+        </View>
+
+      </View>
     </TouchableWithoutFeedback>
-)
+  )
 }

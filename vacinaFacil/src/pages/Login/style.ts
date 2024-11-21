@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 200,
-    marginBottom: 100,
+    marginBottom: 70,
     marginTop: 20,
   },
 
@@ -28,17 +28,33 @@ export const styles = StyleSheet.create({
 
    inserir:{
     width: "100%",
-    height: 100,
+    marginBottom: 20,
    },
 
     senha:{
     width: "100%",
-    height: 200,
+    marginBottom: 30,
    },
 
    texto:{
-    height: 40,
      marginTop: 20,
+     marginBottom: 15,
+     color: "#ffffffdd",
+     fontSize: 15,
+   },
+
+   boxButton:{
+
+   },
+
+   buttonEntrar:{
+
+   },
+
+   buttonText:{
+    fontSize: 20,
+    color: "#fff",
+    fontWeight: "bold",
    },
   
 });

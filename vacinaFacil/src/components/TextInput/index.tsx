@@ -19,7 +19,7 @@ export const TextInputField = ({
 
   return (
     <>
-    <Text>{propsLabel}</Text>
+    <Text style={styles.label}>{propsLabel}</Text>
     <TextInput
       onChangeText={hadleFunctionInput}
       style={styles.input}
