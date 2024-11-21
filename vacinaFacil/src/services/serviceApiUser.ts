@@ -25,3 +25,17 @@ export const comparar = async (userEmail:string, userPassword: string) => {
     return null;
   }
 }
+
+
+
+export const inserir = async (data: PostDataUser) => {
+  try {
+    const response = await axios.post(
+      "https://673e07880118dbfe8609d916.mockapi.io/usuario",
+      data
+    );
+    console.log("Respota da API", response.data);
+  } catch (error) {
+    console.error("Erro ao fazer o POST", error);
+  }
+};
