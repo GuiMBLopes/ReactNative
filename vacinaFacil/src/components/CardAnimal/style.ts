@@ -6,14 +6,16 @@ export const style = StyleSheet.create({
         backgroundColor:"#247BA0",
         justifyContent:"center",
         alignItems:"center",
-        paddingTop:20
+        paddingTop:20,
     },
     card:{
         backgroundColor:"#FFF",
-        width:"80%",
+        width:"90%",
         height:200,
         borderRadius:10,
-        display:"flex"
+        display:"flex",
+        elevation: 8,
+        marginBottom:10
     },
     cardText:{
         width:"80%"

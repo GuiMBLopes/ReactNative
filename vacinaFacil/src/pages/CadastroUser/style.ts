@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#fff",
+
   },
 
   formContainer: {
@@ -80,7 +81,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-  
   buttonText: {
     color: "#FFF",
     fontSize: 16,
@@ -88,5 +88,4 @@ export const styles = StyleSheet.create({
   },
 });
 
-export default styles;
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   View,
   Text,
@@ -8,15 +9,18 @@ import {
   ScrollView,
 } from "react-native";
 import { styles } from "./style";
+import { Picker } from "@react-native-picker/picker";
+import { Header } from "../../components/HeaderCadastro";
 
-const CadastroUser = () => {
+ export const  CadastroUser = () => {
+  const [tipo, setTipo] = useState("Pessoa");
+
   const [form, setForm] = useState({
     nome: "",
     dataNascimento: "",
     cpf: "",
     telefone: "",
     email: "",
-    usuario: "",
     senha: "",
     confirmarSenha: "",
   });
@@ -33,7 +37,9 @@ const CadastroUser = () => {
         .replace(/\D/g, "")
         .replace(/(\d{2})(\d)/, "($1) $2")
         .replace(/(\d{4,5})(\d{4})$/, "$1-$2");
+
     } else if (field === "dataNascimento") {
+
       return value
         .replace(/\D/g, "")
         .replace(/(\d{2})(\d)/, "$1/$2")
@@ -48,6 +54,7 @@ const CadastroUser = () => {
   };
 
   const handleSubmit = () => {
+
     if (form.senha !== form.confirmarSenha) {
       alert("As senhas não coincidem!");
       return;
@@ -128,4 +135,3 @@ const CadastroUser = () => {
   );
 };
 
-export default CadastroUser;
