@@ -1,5 +1,6 @@
 import axios from "axios";
 import { PostDataUser } from "../@types/api";
+import { Alert } from "react-native";
 
 export const buscar = async () => {
   try {
@@ -13,12 +14,14 @@ export const buscar = async () => {
   }
 };
 
-export const comparar = async (userEmail:string) => {
+export const comparar = async (userEmail:string, userPassword: string) => {
   const dados =  await buscar()
-  const email =  dados.filter((user:PostDataUser) => userEmail === user.email) 
-if(email.length===0) {
-  return null
-}
-  
-  return email
+  const user =  dados.find((user:PostDataUser) => userEmail === user.email && userPassword === user.senha)
+  if (user) {
+    Alert.alert("Usuário validado");
+    return user;
+  } else {
+    Alert.alert("Login ou senha inválidos");
+    return null;
+  }
 }

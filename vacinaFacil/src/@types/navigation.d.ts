@@ -3,6 +3,7 @@ export type PropsStack = {
   StackCadastroLocal: undefined;
   StcakCadastroUser:undefined;
   StcakLogin: undefined
+  StackProfile: undefined;
 };
 
 export type PropsTab = {

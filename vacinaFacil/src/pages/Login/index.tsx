@@ -6,6 +6,7 @@ import { TextInputField } from "../../components/TextInput";
 import { ButtonType } from "../../components/ButtonType";
 import { buscar, comparar } from "../../services/serviceApiUser";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../../hooks/useAuth";
 
 
 export const Login = () => {
@@ -13,19 +14,13 @@ export const Login = () => {
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigation ()
+  const {setUsuario} = useAuth();
 
   const handleLogin = async () => {
-    const user = await comparar(email)
-    if (user===null) {
-      Alert.alert("Email Inválido")
-    }else{
-        if (
-      user[0].senha === password
-    ) {
-       navigate.navigate("Home")
-    }else{
-      Alert.alert("Senha Inválida")
-    }
+    const user = await comparar(email, password)
+    if (user){
+      setUsuario(user);
+      navigate.navigate('Home');
     }
   };
 
