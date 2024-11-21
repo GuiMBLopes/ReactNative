@@ -4,26 +4,29 @@ import { styles } from "./style";
 interface PropsInput {
   placeHolder?: string;
   valueInput?: string;
-  hadleFunctionInput?: (value: string) => void;
+  handleFunctionInput?: (value: string) => void;
   label?: string;
+  tamanhoDigito?: number;
 }
 
 export const InputsCadastroLocal = ({
   placeHolder,
   valueInput,
-  hadleFunctionInput,
+  handleFunctionInput,
   label,
+  tamanhoDigito,
 }: PropsInput) => {
   return (
     <View style={styles.boxInputText}>
       <Text style={styles.text}>{label}</Text>
       <TextInput
         style={styles.inputText}
-        onChangeText={hadleFunctionInput}
+        onChangeText={handleFunctionInput}
         placeholder={placeHolder}
         value={valueInput}
         placeholderTextColor="#0000007d"
         multiline={true}
+        maxLength={tamanhoDigito}
       />
     </View>
   );

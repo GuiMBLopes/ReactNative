@@ -35,4 +35,16 @@ export interface Cards {
     id:string
   }
 
-  
+export interface PostDataUser{
+    nome: "",
+    dataNascimento: "",
+    cpf: "",
+    telefone: "",
+    email: "",
+    nomePet: "",
+    especie: "",
+    raca: "",
+    tutor: "",
+    emailTutor: "",
+    dataNascimentoPet: "",
+  };
