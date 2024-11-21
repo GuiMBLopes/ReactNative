@@ -1,23 +1,28 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-import styles from "./style";
+
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
+import { styles } from "./style";
 import { Picker } from "@react-native-picker/picker";
 import { Header } from "../../components/HeaderCadastro";
 
  export const  CadastroUser = () => {
   const [tipo, setTipo] = useState("Pessoa");
+
   const [form, setForm] = useState({
     nome: "",
     dataNascimento: "",
     cpf: "",
     telefone: "",
     email: "",
-    nomePet: "",
-    especie: "",
-    raca: "",
-    tutor: "",
-    emailTutor: "",
-    dataNascimentoPet: "",
+    senha: "",
+    confirmarSenha: "",
   });
 
   const formatField = (field: string, value: string) => {
@@ -32,7 +37,9 @@ import { Header } from "../../components/HeaderCadastro";
         .replace(/\D/g, "")
         .replace(/(\d{2})(\d)/, "($1) $2")
         .replace(/(\d{4,5})(\d{4})$/, "$1-$2");
-    } else if (field === "dataNascimento" || field === "dataNascimentoPet") {
+
+    } else if (field === "dataNascimento") {
+
       return value
         .replace(/\D/g, "")
         .replace(/(\d{2})(\d)/, "$1/$2")
@@ -47,110 +54,84 @@ import { Header } from "../../components/HeaderCadastro";
   };
 
   const handleSubmit = () => {
+
+    if (form.senha !== form.confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return;
+    }
     console.log("Dados cadastrados:", form);
     alert("Cadastro realizado com sucesso!");
   };
 
   return (
-    <>
-    <Header/>
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.title}>Cadastro de Usuário</Text>
-        <Picker
-          selectedValue={tipo}
-          onValueChange={(itemValue) => setTipo(itemValue)}
-          style={styles.picker}
-        >
-          <Picker.Item label="Pessoa" value="Pessoa" />
-          <Picker.Item label="Pet" value="Pet" />
-        </Picker>
-
-        {tipo === "Pessoa" && (
-          <>
-            <TextInput
-              style={styles.input}
-              placeholder="Nome completo"
-              value={form.nome}
-              onChangeText={(text) => handleInputChange("nome", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Data de nascimento (DD/MM/AAAA)"
-              value={form.dataNascimento}
-              onChangeText={(text) => handleInputChange("dataNascimento", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="CPF (000.000.000-00)"
-              value={form.cpf}
-              onChangeText={(text) => handleInputChange("cpf", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Telefone ((99) 99999-9999)"
-              value={form.telefone}
-              onChangeText={(text) => handleInputChange("telefone", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="E-mail"
-              value={form.email}
-              onChangeText={(text) => handleInputChange("email", text)}
-            />
-          </>
-        )}
-
-        {tipo === "Pet" && (
-          <>
-            <TextInput
-              style={styles.input}
-              placeholder="Nome do pet"
-              value={form.nomePet}
-              onChangeText={(text) => handleInputChange("nomePet", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Data de nascimento do pet (DD/MM/AAAA)"
-              value={form.dataNascimentoPet}
-              onChangeText={(text) =>
-                handleInputChange("dataNascimentoPet", text)
-              }
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Espécie (Ex: Cachorro, Gato)"
-              value={form.especie}
-              onChangeText={(text) => handleInputChange("especie", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Raça"
-              value={form.raca}
-              onChangeText={(text) => handleInputChange("raca", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Nome do tutor"
-              value={form.tutor}
-              onChangeText={(text) => handleInputChange("tutor", text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="E-mail do tutor"
-              value={form.emailTutor}
-              onChangeText={(text) => handleInputChange("emailTutor", text)}
-            />
-          </>
-        )}
-
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Cadastrar</Text>
-        </TouchableOpacity>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <View style ={styles.container}>
+        <View style={styles.header}>
+          <Image
+            source={require("../../../assets/logocadastro.png")}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          <Text style={styles.appName}>VacinaFácil</Text>
+        </View>
+        <View style={styles.formContainer}>
+          <Text style={styles.title}>Cadastro de Usuário</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Nome completo"
+            value={form.nome}
+            onChangeText={(text) => handleInputChange("nome", text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Data de nascimento (DD/MM/AAAA)"
+            value={form.dataNascimento}
+            onChangeText={(text) => handleInputChange("dataNascimento", text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="CPF (000.000.000-00)"
+            value={form.cpf}
+            onChangeText={(text) => handleInputChange("cpf", text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Telefone ((99) 99999-9999)"
+            value={form.telefone}
+            onChangeText={(text) => handleInputChange("telefone", text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="E-mail"
+            value={form.email}
+            onChangeText={(text) => handleInputChange("email", text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Usuário"
+            value={form.usuario}
+            onChangeText={(text) => handleInputChange("usuario", text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Senha"
+            secureTextEntry
+            value={form.senha}
+            onChangeText={(text) => handleInputChange("senha", text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirmar Senha"
+            secureTextEntry
+            value={form.confirmarSenha}
+            onChangeText={(text) => handleInputChange("confirmarSenha", text)}
+          />
+          <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+            <Text style={styles.buttonText}>Cadastrar</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-    </>
+    </ScrollView>
   );
 };
 
-export default CadastroUser;
