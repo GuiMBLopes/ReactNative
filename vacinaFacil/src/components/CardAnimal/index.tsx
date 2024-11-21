@@ -10,7 +10,6 @@ export const CardAnimal = ({
   descricao,
   horaFim,
   horaInicio,
-  id,
   numero,
   rua,
   tipo,
@@ -31,7 +30,7 @@ export const CardAnimal = ({
           </View>
           <View style={style.row}>
             <View style={style.rowDate}>
-              <Icon name="calendar" type="font-awesome-5" />
+              <Icon name="calendar" type="font-awesome-5"/>
               <Text style={style.rowDateText}>
                 {dataInicio} - {dataFim}
               </Text>

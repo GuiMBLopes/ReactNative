@@ -8,6 +8,7 @@ import { ButtonCadastroLocal } from "../../components/ButtonCadastroLocal";
 import { useEffect, useState } from "react";
 import { buscar, deletarApi, inserir } from "../../services/serviceApi";
 import { Cards } from "../../@types/api";
+import { Header } from "../../components/HeaderCadastro";
 
 
 export const CadastroLocal = () => {
@@ -99,7 +100,6 @@ export const CadastroLocal = () => {
     }
   };
 
-  
   const carregarDados = async () =>{
     const dados = await buscar()
     setInfo(dados)
@@ -116,8 +116,66 @@ export const CadastroLocal = () => {
     }, 1000);
   }
 
+  const handleInputCep = (value: string) => {
+    const numericText = value.replace(/\D/g, "");
+
+    const formattedCep = numericText.replace(/^(\d{5})(\d)/, "$1-$2");
+
+    setCep(formattedCep);
+  };
+
+  const handleInputTimeInico = (value: string) => {
+    const numericText = value.replace(/\D/g, "");
+  
+    const formattedTime = numericText.replace(/(\d{2})(\d)/, "$1:$2");
+  
+    setHoraInicio(formattedTime); 
+  };
+
+  const handleInputTimeFim = (value: string) => {
+    const numericText = value.replace(/\D/g, "");
+  
+  
+    const formattedTime = numericText.replace(/(\d{2})(\d)/, "$1:$2");
+  
+    setHoraFim(formattedTime); 
+  };
+
+  const handleInputDateincio = (value: string) => {
+    const numericText = value.replace(/\D/g, "");
+  
+    let formattedDate = numericText;
+  
+    if (formattedDate.length > 2) {
+      formattedDate = formattedDate.replace(/(\d{2})(\d)/, "$1/$2");
+    }
+  
+    if (formattedDate.length > 5) {
+      formattedDate = formattedDate.replace(/(\d{2}\/\d{2})(\d)/, "$1/$2");
+    }
+  
+    setDataInicio(formattedDate);
+  };
+
+  const handleInputDateFim = (value: string) => {
+    const numericText = value.replace(/\D/g, "");
+  
+    let formattedDate = numericText;
+  
+    if (formattedDate.length > 2) {
+      formattedDate = formattedDate.replace(/(\d{2})(\d)/, "$1/$2");
+    }
+  
+    if (formattedDate.length > 5) {
+      formattedDate = formattedDate.replace(/(\d{2}\/\d{2})(\d)/, "$1/$2");
+    }
+  
+    setDataFim(formattedDate);
+  };
+
   return (
     <ScrollView style={{ backgroundColor: "#247BA0" }}>
+      <Header/>
       <View style={styles.container}>
         <Text style={styles.titulo}>Cadastre novos locais</Text>
         <View style={styles.line} />
@@ -143,31 +201,32 @@ export const CadastroLocal = () => {
           <InputsCadastroLocal
             label="Rua:"
             placeHolder="Digite a rua"
-            hadleFunctionInput={(value: string) => setRua(value)}
+            handleFunctionInput={(value: string) => setRua(value)}
             valueInput={rua}
           />
           <InputsCadastroLocal
             label="Numero:"
             placeHolder="Digite o numero"
-            hadleFunctionInput={(value: string) => setNumero(value)}
+            handleFunctionInput={(value: string) => setNumero(value)}
             valueInput={numero}
           />
           <InputsCadastroLocal
             label="Bairro:"
             placeHolder="Digite o bairro"
-            hadleFunctionInput={(value: string) => setBairro(value)}
+            handleFunctionInput={(value: string) => setBairro(value)}
             valueInput={bairro}
           />
           <InputsCadastroLocal
             label="CEP:"
             placeHolder="Digite o CEP"
-            hadleFunctionInput={(value: string) => setCep(value)}
+            handleFunctionInput={handleInputCep}
             valueInput={cep}
+            tamanhoDigito={9}
           />
           <InputsCadastroLocal
             label="Descrição:"
             placeHolder="Digite a descrição"
-            hadleFunctionInput={(value: string) => setDescricao(value)}
+            handleFunctionInput={(value: string) => setDescricao(value)}
             valueInput={descricao}
           />
 
@@ -176,15 +235,16 @@ export const CadastroLocal = () => {
               <InputsCadastroLocal
                 label="Data Inicio:"
                 placeHolder="DD/MM/AAAA"
-                hadleFunctionInput={(value: string) => setDataInicio(value)}
+                handleFunctionInput={handleInputDateincio}
                 valueInput={dataInicio}
+                tamanhoDigito={10}
               />
             </View>
             <View style={styles.areaSmallInput}>
               <InputsCadastroLocal
                 label="Data Fim:"
                 placeHolder="DD/MM/AAAA"
-                hadleFunctionInput={(value: string) => setDataFim(value)}
+                handleFunctionInput={handleInputDateFim}
                 valueInput={dataFim}
               />
             </View>
@@ -194,16 +254,18 @@ export const CadastroLocal = () => {
               <InputsCadastroLocal
                 label="Hora Inicio:"
                 placeHolder="HH:MM"
-                hadleFunctionInput={(value: string) => setHoraInicio(value)}
+                handleFunctionInput={handleInputTimeInico}
                 valueInput={horaInicio}
+                tamanhoDigito={5}
               />
             </View>
             <View style={styles.areaSmallInput}>
               <InputsCadastroLocal
                 label="Hora Fim:"
                 placeHolder="HH:MM"
-                hadleFunctionInput={(value: string) => setHoraFim(value)}
+                handleFunctionInput={handleInputTimeFim}
                 valueInput={horaFim}
+                tamanhoDigito={5}
               />
             </View>
           </View>

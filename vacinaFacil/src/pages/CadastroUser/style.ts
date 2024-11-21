@@ -5,35 +5,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#247BA0",
     alignItems: "center",
-    justifyContent: "flex-start",
-    padding: 1,
-  },
-
-  header: {    
-    width: "300%",
-    height: "10%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 20,
-    marginBottom: 100,
-    borderBottomWidth: 1,
-    backgroundColor: "#13293D",
-    elevation: 5,
-  },
-
-  logo: {
-    width: 50, 
-    height: 50,
-    left: -100,
-  },
-
-  appName: {
-    textAlign: "center",
-    marginLeft: -50, 
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#fff",
   },
 
   formContainer: {
@@ -44,6 +15,7 @@ export const styles = StyleSheet.create({
     padding: 20,
     width: "90%",
     alignItems: "center",
+    marginTop:90
   },
 
   title: {
@@ -80,7 +52,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-  
+
   buttonText: {
     color: "#FFF",
     fontSize: 16,

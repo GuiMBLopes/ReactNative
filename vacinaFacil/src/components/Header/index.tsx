@@ -7,24 +7,16 @@ import { style } from "./style";
 export const Header = () => {
   const navigate = useNavigation();
  
-  const navigateToCasdastroLocal = () => adm ? navigate.navigate("StackCadastroLocal") : "";
+  const navigateToCasdastroLocal = () => adm ? navigate.navigate("StackCadastroLocal") : navigate.navigate("StcakLogin");
 
   const navigateToBack = () => {
     navigate.goBack()
   }
   
-  const adm = true;
+  const adm = false;
 
   return (
     <View style={style.container}>
-      <TouchableOpacity style={{ top: 17 }} onPress={navigateToBack}>
-        <Icon
-          name="chevron-back-outline"
-          type="ionicon"
-          size={50}
-          color={"#fff"}
-        />
-      </TouchableOpacity>
       <View style={{flexDirection:"row"}}>
         <Text style={{color:"#fff", top:30, paddingRight:5}}>VacinaFácil</Text>
         <Image source={Logo} style={style.logo} />

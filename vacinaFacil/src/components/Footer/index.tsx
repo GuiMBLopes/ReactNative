@@ -6,13 +6,14 @@ interface PropsFooter{
   IconName: string
   IconType?: string
   Name: string
+  Focus: boolean
 }
 
-export const Footer = ({IconName,IconType,Name}:PropsFooter) => {
+export const Footer = ({IconName,IconType,Name, Focus}:PropsFooter) => {
   return (
     <View style={style.container}>
-    <Icon name={IconName} type={IconType} size={40} color={"#fff"} />
-    <Text style={style.text}>{Name}</Text>
+    <Icon name={IconName} type={IconType} size={Focus ? 40 : 30} color={ Focus ? "#fff" : "#999"}/>
+    <Text style={Focus ? style.textFocus : style.textUnFocus}>{Name}</Text>
   </View>
   );
 };
