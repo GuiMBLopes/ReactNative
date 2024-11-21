@@ -10,6 +10,7 @@ import Home from "../../pages/Home";
 const Tab = createBottomTabNavigator();
 
 export const TabRoutes = () => {
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -26,12 +27,12 @@ export const TabRoutes = () => {
       }}
     >
       <Tab.Screen
-        name="home"
+        name="TabsHome"
         component={Home}
         options={{
-          tabBarIcon: ({ focused, size }) => (
+          tabBarIcon: ({focused}) => (
             <View style={{ flexDirection: "row" }}>
-              <Footer IconName="home" IconType="ionicon" Name="home" />
+              <Footer IconName="home" IconType="ionicon" Name="home" Focus={focused} />
             </View>
           ),
         }}
@@ -41,9 +42,9 @@ export const TabRoutes = () => {
         name="pessoa"
         component={PessoaPage}
         options={{
-          tabBarIcon: ({ focused, size }) => (
+          tabBarIcon: ({ focused}) => (
             <View style={{ flexDirection: "row" }}>
-              <Footer IconName="person" IconType="ionico" Name="pessoa" />
+              <Footer IconName="person" IconType="ionico" Name="pessoa" Focus={focused}/>
             </View>
           ),
         }}
@@ -54,7 +55,7 @@ export const TabRoutes = () => {
         options={{
           tabBarIcon: ({ focused, size }) => (
             <View style={{ flexDirection: "row" }}>
-              <Footer IconName="paw-sharp" IconType="ionicon" Name="animal" />
+              <Footer IconName="paw-sharp" IconType="ionicon" Name="animal" Focus={focused}/>
             </View>
           ),
         }}

@@ -18,7 +18,6 @@ export const buscar = async () => {
     const response = await axios.get(
       "https://6722c0392108960b9cc576fc.mockapi.io/vacina"
     );
-    console.log("Resposta API", response.data);
     const dadosGet = response.data;
     return separarCardsData(dadosGet);
   } catch (error) {
@@ -32,7 +31,6 @@ export const listar = async () => {
     const response = await axios.get(
       "https://6722c0392108960b9cc576fc.mockapi.io/vacina"
     );
-    console.log("Resposta API", response.data);
     const dadosGet = response.data;
     return cardPagesData(dadosGet);
   } catch (error) {

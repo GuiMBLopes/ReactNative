@@ -10,20 +10,25 @@ export const Header = () => {
   const navigateToCasdastroLocal = () => adm ? navigate.navigate("StackCadastroLocal") : "";
 
   const navigateToBack = () => {
-    navigate.goBack()
+    navigate.navigate("Home")
   }
   
   const adm = true;
 
   return (
     <View style={style.container}>
-      <View style={{flexDirection:"row"}}>
-        <Text style={{color:"#fff", top:30, paddingLeft:10}}>Vacina Facil</Text>
+      <TouchableOpacity style={{ top: 17 }} onPress={navigateToBack}>
+        <Icon
+          name="chevron-back-outline"
+          type="ionicon"
+          size={50}
+          color={"#fff"}
+        />
+      </TouchableOpacity>
+      <View style={{flexDirection:"row", left:60}}>
+        <Text style={{color:"#fff", top:30, paddingRight:5}}>Vacina Facil</Text>
         <Image source={Logo} style={style.logo} />
       </View>
-      <TouchableOpacity onPress={navigateToCasdastroLocal}>
-        <Text style={style.text}>Seja bem vindo, ADM</Text>
-      </TouchableOpacity>
     </View>
   );
 };
