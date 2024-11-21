@@ -1,16 +1,32 @@
 import { useState } from "react";
-import { Keyboard, TouchableWithoutFeedback, View, Image, Text, TouchableOpacity } from "react-native";
+import { Keyboard, TouchableWithoutFeedback, View, Image, Text, TouchableOpacity, Alert } from "react-native";
 import { styles } from "./style";
 import Logo from "../../assets/logo.png";
 import { TextInputField } from "../../components/TextInput";
 import { ButtonType } from "../../components/ButtonType";
+import { buscar, comparar } from "../../services/serviceApiUser";
+import { useNavigation } from "@react-navigation/native";
 
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleLogin = () => {
+  const navigate = useNavigation ()
+
+  const handleLogin = async () => {
+    const user = await comparar(email)
+    if (user===null) {
+      Alert.alert("Email Inválido")
+    }else{
+        if (
+      user[0].senha === password
+    ) {
+       navigate.navigate("Home")
+    }else{
+      Alert.alert("Senha Inválida")
+    }
+    }
   };
 
   const handlePassword = (value: string) => {
