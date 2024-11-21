@@ -70,7 +70,7 @@ export const Login = () => {
         </View>
 
         <View style={styles.boxButton}>
-          <TouchableOpacity style={styles.buttonEntrar} >
+          <TouchableOpacity style={styles.buttonEntrar} onPress={()=> navigate.navigate('StcakCadastroUser')}>
             <Text style={styles.buttonText}>Clique aqui</Text>
           </TouchableOpacity>
         </View>
