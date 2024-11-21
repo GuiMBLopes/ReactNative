@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   description: { 
     fontSize: 15, 
-    color: "#ccc", 
+    color: "#E8F1F2", 
     lineHeight: 22, 
     textAlign: "justify" 
   },
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 16,
-    color: "#ccc",
+    color: "#E8F1F2",
     lineHeight: 24,
     textAlign: "justify",
   },
