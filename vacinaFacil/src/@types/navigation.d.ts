@@ -1,7 +1,8 @@
 export type PropsStack = {
   Home: undefined;
   StackCadastroLocal: undefined;
-  StcakCadastroUser:undefined
+  StcakCadastroUser:undefined;
+  StcakLogin: undefined
 };
 
 export type PropsTab = {

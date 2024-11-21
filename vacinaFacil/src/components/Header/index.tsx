@@ -7,13 +7,13 @@ import { style } from "./style";
 export const Header = () => {
   const navigate = useNavigation();
  
-  const navigateToCasdastroLocal = () => adm ? navigate.navigate("StackCadastroLocal") : "";
+  const navigateToCasdastroLocal = () => adm ? navigate.navigate("StackCadastroLocal") : navigate.navigate("StcakLogin");
 
   const navigateToBack = () => {
     navigate.goBack()
   }
   
-  const adm = true;
+  const adm = false;
 
   return (
     <View style={style.container}>
