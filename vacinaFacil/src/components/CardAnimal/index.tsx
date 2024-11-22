@@ -15,11 +15,11 @@ export const CardAnimal = ({
   tipo,
 }: DataCardPage) => {
   return (
-    <View style={style.container}>
-      {tipo == "animal" ? (
+    <>
+      {tipo === "animal" ? (
         <View style={style.card}>
           <View style={style.cardText}>
-            <Text style={style.title}>{tipo}</Text>
+            <Text style={style.title}>{tipo === "animal"? 'Animal' : 'Indefinido' }</Text>
             <Text style={style.subTitle}>{descricao}</Text>
           </View>
           <View style={style.local}>
@@ -46,6 +46,6 @@ export const CardAnimal = ({
       ) : (
         ""
       )}
-    </View>
+    </>
   );
 };

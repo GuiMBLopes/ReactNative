@@ -54,6 +54,7 @@ export const Login = () => {
             valueInput={password}
             hadleFunctionInput={handlePassword}
             typeInput={true}
+            propsShowEye={true}
           />
         </View>
 

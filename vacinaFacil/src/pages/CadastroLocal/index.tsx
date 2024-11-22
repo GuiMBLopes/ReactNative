@@ -175,7 +175,7 @@ export const CadastroLocal = () => {
 
   return (
     <ScrollView style={{ backgroundColor: "#247BA0" }}>
-      <Header/>
+      <Header propsAdm={true}/>
       <View style={styles.container}>
         <Text style={styles.titulo}>Cadastre novos locais</Text>
         <View style={styles.line} />
@@ -279,6 +279,7 @@ export const CadastroLocal = () => {
           <FlatList
             data={info}
             keyExtractor={(info) => info.id}
+            scrollEnabled={false}
             renderItem={({ item }) => (
               <CardsCadastroLocal
                 bairro={item.bairro}

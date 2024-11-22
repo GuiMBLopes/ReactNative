@@ -37,32 +37,37 @@ export const AuthProvider = ({ children }: any) => {
   const navigate = useNavigation();
   const logout = () => {
     AsyncStorage.removeItem("@InfoUser");
-    setUsuario({nome: "",
-        cpf: "",
-        dataNascimento: "",
-        email: "",
-        senha: "",
-        telefone: ""})
+    setUsuario({
+      nome: "",
+      cpf: "",
+      dataNascimento: "",
+      email: "",
+      senha: "",
+      telefone: "",
+    });
     navigate.navigate("Home");
   };
 
-    const comparar = async (userEmail:string, userPassword: string) => {
-    const dados =  await buscar()
-    const user =  dados.find((user:PostDataUser) => userEmail === user.email && userPassword === user.senha)
+  const comparar = async (userEmail: string, userPassword: string) => {
+    const dados = await buscar();
+    const user = dados.find(
+      (user: PostDataUser) =>
+        userEmail === user.email && userPassword === user.senha
+    );
     if (user) {
-      storeData (user.email, user.senha); 
-      setUsuario (user)
+      storeData(user.email, user.senha);
+      setUsuario(user);
       navigate.navigate("Home");
     } else {
       Alert.alert("Login ou senha inválidos");
     }
-  }
+  };
 
   const storeData = async (email: string, senha: string) => {
-    const user = { 
-        email: email,
-        senha: senha,
-     };
+    const user = {
+      email: email,
+      senha: senha,
+    };
     try {
       const jsonValue = JSON.stringify(user);
       await AsyncStorage.setItem("@InfoUser", jsonValue);
@@ -77,8 +82,7 @@ export const AuthProvider = ({ children }: any) => {
       if (value !== null) {
         const jsonValue = JSON.parse(value);
         navigate.navigate("Home");
-        console.log("Dados encontrados", jsonValue)
-        comparar (jsonValue.email, jsonValue.senha)
+        comparar(jsonValue.email, jsonValue.senha);
       }
     } catch (error) {}
   };

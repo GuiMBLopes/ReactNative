@@ -20,17 +20,21 @@ export const Header = () => {
 
   return (
     <View style={style.container}>
-      <View style={{ flexDirection: "row" }}>
-        <Text style={{ color: "#fff", top: 30, paddingRight: 5 }}>
-          VacinaFácil
-        </Text>
+      <View style={style.boxItem}>
+        <Text style={{ color: "#fff"}}>VacinaFácil</Text>
+      </View>
+      <View style={style.boxItem}>
         <Image source={Logo} style={style.logo} />
       </View>
-      <TouchableOpacity onPress={navigateToCasdastroLocal}>
-        <Text style={style.text}>
-          {usuario.nome ? "Seja bem vindo, " + usuario.nome : "Faça seu login"}
-        </Text>
-      </TouchableOpacity>
+      <View style={style.boxItem}>
+        <TouchableOpacity onPress={navigateToCasdastroLocal} style={{width: '100%'}}>
+          <Text style={style.text}>
+            {usuario.nome
+              ? "Seja bem vindo, " + usuario.nome
+              : "Faça seu login"}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

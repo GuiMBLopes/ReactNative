@@ -6,20 +6,26 @@ export const style = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     height:100,
-    alignItems:"center",
-    alignContent:"center",
+    paddingTop: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 8
   },
+
+  boxItem:{
+    width:'33%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   logo: {
     height: 60,
     width: 60,
-    top:15,
-    left:55
   },
   text: {
     width:115,
     color: "#FFF",
     fontSize: 12,
-    top:15,
-    left:100
+    textAlign: 'center'
   },
 });

@@ -25,8 +25,8 @@ export default function Perfil() {
         <Text style={styles.label}>Email</Text>
         <Text style={styles.text}>{usuario.email}</Text>
 
-        <Text style={styles.label}>Senha</Text>
-        <Text style={styles.text}>{usuario.senha}</Text>
+        <Text style={styles.label}>CPF</Text>
+        <Text style={styles.text}>{usuario.cpf}</Text>
       </View>
 
       {/* sair */}
