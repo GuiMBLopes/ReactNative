@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { buscar, deletarApi, inserir } from "../../services/serviceApi";
 import { Cards } from "../../@types/api";
 import { Header } from "../../components/HeaderCadastro";
-
+import Calendario from "../../components/Calendario";
 
 export const CadastroLocal = () => {
   const [rua, setRua] = useState<string>("");
@@ -25,8 +25,8 @@ export const CadastroLocal = () => {
   const [isCheckedAnimal, setIsCheckedAnimal] = useState(false);
   const [isCheckedCrianca, setIsCheckedCrianca] = useState(false);
   const [isCheckedIdoso, setIsCheckedIdoso] = useState(false);
-  const [info, setInfo] = useState<Cards[]>([])
-  
+  const [info, setInfo] = useState<Cards[]>([]);
+
   const cleanInput = () => {
     setRua("");
     setNumero("");
@@ -58,11 +58,11 @@ export const CadastroLocal = () => {
     };
 
     console.log(dados);
-    inserir(dados)
+    inserir(dados);
     cleanInput();
 
     setInterval(() => {
-      carregarDados()
+      carregarDados();
     }, 1000);
   };
 
@@ -100,21 +100,21 @@ export const CadastroLocal = () => {
     }
   };
 
-  const carregarDados = async () =>{
-    const dados = await buscar()
-    setInfo(dados)
-  }
+  const carregarDados = async () => {
+    const dados = await buscar();
+    setInfo(dados);
+  };
 
   useEffect(() => {
-    carregarDados()
+    carregarDados();
   }, []);
 
-  const deletar = (id:string) => {
-    deletarApi(id)
+  const deletar = (id: string) => {
+    deletarApi(id);
     setInterval(() => {
-      carregarDados()
+      carregarDados();
     }, 1000);
-  }
+  };
 
   const handleInputCep = (value: string) => {
     const numericText = value.replace(/\D/g, "");
@@ -126,56 +126,34 @@ export const CadastroLocal = () => {
 
   const handleInputTimeInico = (value: string) => {
     const numericText = value.replace(/\D/g, "");
-  
+
     const formattedTime = numericText.replace(/(\d{2})(\d)/, "$1:$2");
-  
-    setHoraInicio(formattedTime); 
+
+    setHoraInicio(formattedTime);
   };
 
   const handleInputTimeFim = (value: string) => {
     const numericText = value.replace(/\D/g, "");
-  
-  
+
     const formattedTime = numericText.replace(/(\d{2})(\d)/, "$1:$2");
-  
-    setHoraFim(formattedTime); 
+
+    setHoraFim(formattedTime);
   };
 
-  const handleInputDateincio = (value: string) => {
-    const numericText = value.replace(/\D/g, "");
-  
-    let formattedDate = numericText;
-  
-    if (formattedDate.length > 2) {
-      formattedDate = formattedDate.replace(/(\d{2})(\d)/, "$1/$2");
-    }
-  
-    if (formattedDate.length > 5) {
-      formattedDate = formattedDate.replace(/(\d{2}\/\d{2})(\d)/, "$1/$2");
-    }
-  
-    setDataInicio(formattedDate);
+  const handleInputDateincio = (date: string) => {
+    setDataInicio(date);
   };
 
-  const handleInputDateFim = (value: string) => {
-    const numericText = value.replace(/\D/g, "");
-  
-    let formattedDate = numericText;
-  
-    if (formattedDate.length > 2) {
-      formattedDate = formattedDate.replace(/(\d{2})(\d)/, "$1/$2");
-    }
-  
-    if (formattedDate.length > 5) {
-      formattedDate = formattedDate.replace(/(\d{2}\/\d{2})(\d)/, "$1/$2");
-    }
-  
-    setDataFim(formattedDate);
+  const handleInputDateFim = (date: string) => {
+    setDataFim(date);
   };
 
+  const [calendarVisibleInicio, setCalendarVisibleInicio] =
+    useState<boolean>(false);
+  const [calendarVisibleFim, setCalendarVisibleFim] = useState<boolean>(false);
   return (
     <ScrollView style={{ backgroundColor: "#247BA0" }}>
-      <Header propsAdm={true}/>
+      <Header propsAdm={true} />
       <View style={styles.container}>
         <Text style={styles.titulo}>Cadastre novos locais</Text>
         <View style={styles.line} />
@@ -235,16 +213,16 @@ export const CadastroLocal = () => {
               <InputsCadastroLocal
                 label="Data Inicio:"
                 placeHolder="DD/MM/AAAA"
-                handleFunctionInput={handleInputDateincio}
                 valueInput={dataInicio}
                 tamanhoDigito={10}
+                handleFunction={() => setCalendarVisibleInicio(true)}
               />
             </View>
             <View style={styles.areaSmallInput}>
               <InputsCadastroLocal
                 label="Data Fim:"
                 placeHolder="DD/MM/AAAA"
-                handleFunctionInput={handleInputDateFim}
+                handleFunction={() => setCalendarVisibleFim(true)}
                 valueInput={dataFim}
               />
             </View>
@@ -288,11 +266,23 @@ export const CadastroLocal = () => {
                 tipo={item.tipo}
                 dataFim={item.dataFim}
                 dataInicio={item.dataInicio}
-                handleFunction={()=>{deletar(item.id)}}
+                handleFunction={() => {
+                  deletar(item.id);
+                }}
               />
             )}
           />
         </View>
+        <Calendario
+          visible={calendarVisibleInicio}
+          onClose={() => setCalendarVisibleInicio(false)}
+          onDateSelect={(selectedDate) => handleInputDateincio(selectedDate)}
+        />
+        <Calendario
+          visible={calendarVisibleFim}
+          onClose={() => setCalendarVisibleFim(false)}
+          onDateSelect={(selectedDate) => handleInputDateFim(selectedDate)}
+        />
       </View>
     </ScrollView>
   );
