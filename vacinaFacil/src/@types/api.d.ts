@@ -44,3 +44,9 @@ export interface PostDataUser{
     senha: string,
     id?: string,
   };
+
+  export interface PropsUserLogin{
+    nome: string,
+    email: string,
+    senha: string,
+  };

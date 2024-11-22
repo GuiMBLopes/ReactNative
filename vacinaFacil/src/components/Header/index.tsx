@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { Icon } from "react-native-elements";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/Logo.png";
 import { style } from "./style";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -17,10 +16,6 @@ export const Header = () => {
     } else {
       navigate.navigate("StackProfile");
     }
-  };
-
-  const navigateToBack = () => {
-    navigate.goBack();
   };
 
   return (

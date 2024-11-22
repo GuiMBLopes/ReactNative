@@ -14,20 +14,6 @@ export const buscar = async () => {
   }
 };
 
-export const comparar = async (userEmail:string, userPassword: string) => {
-  const dados =  await buscar()
-  const user =  dados.find((user:PostDataUser) => userEmail === user.email && userPassword === user.senha)
-  if (user) {
-    Alert.alert("Usuário validado");
-    return user;
-  } else {
-    Alert.alert("Login ou senha inválidos");
-    return null;
-  }
-}
-
-
-
 export const inserir = async (data: PostDataUser) => {
   try {
     const response = await axios.post(

@@ -1,12 +1,11 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "./style";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Perfil() {
-  // Dados
-  const username = "Naruto Mandrake";
-  const email = "narutodograu@hotmail.com";
-  const password = "********";
+  const { usuario, logout } = useAuth(); 
+  const HandleClick = () => {logout()};
 
   return (
     <View style={styles.container}>
@@ -21,17 +20,17 @@ export default function Perfil() {
       {/* Informações */}
       <View style={styles.infoContainer}>
         <Text style={styles.label}>Nome de usuário</Text>
-        <Text style={styles.text}>{username}</Text>
+        <Text style={styles.text}>{usuario.nome}</Text>
 
         <Text style={styles.label}>Email</Text>
-        <Text style={styles.text}>{email}</Text>
+        <Text style={styles.text}>{usuario.email}</Text>
 
         <Text style={styles.label}>Senha</Text>
-        <Text style={styles.text}>{password}</Text>
+        <Text style={styles.text}>{usuario.senha}</Text>
       </View>
 
       {/* sair */}
-      <TouchableOpacity style={styles.logoutButton}>
+      <TouchableOpacity style={styles.logoutButton} onPress={HandleClick}> 
         <Text style={styles.logoutButtonText}>SAIR</Text>
       </TouchableOpacity>
     </View>

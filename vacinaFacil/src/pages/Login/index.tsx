@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Keyboard, TouchableWithoutFeedback, View, Image, Text, TouchableOpacity, Alert } from "react-native";
 import { styles } from "./style";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/Logo.png";
 import { TextInputField } from "../../components/TextInput";
 import { ButtonType } from "../../components/ButtonType";
-import { buscar, comparar } from "../../services/serviceApiUser";
+import { buscar } from "../../services/serviceApiUser";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -14,14 +14,11 @@ export const Login = () => {
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigation ()
-  const {setUsuario} = useAuth();
+  const {setUsuario, comparar} = useAuth();
 
-  const handleLogin = async () => {
-    const user = await comparar(email, password)
-    if (user){
-      setUsuario(user);
-      navigate.navigate('Home');
-    }
+  const handleLogin = () => {
+  comparar(email, password)
+  Alert.alert("Usuário validado");
   };
 
   const handlePassword = (value: string) => {
@@ -31,6 +28,7 @@ export const Login = () => {
   const handleEmail = (value: string) => {
     setEmail(value);
   };
+
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
