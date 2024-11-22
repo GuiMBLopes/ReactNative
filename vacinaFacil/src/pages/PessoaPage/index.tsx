@@ -6,14 +6,11 @@ import {
   Text,
   View,
 } from "react-native";
-import { styles } from "./style";
-import Entypo from "@expo/vector-icons/Entypo";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import banner from "../../assets/banner.png";
 import { DataCardPage } from "../../@types/api";
-import { listar } from "../../services/serviceApi";
+import banner from "../../assets/banner.png";
 import { CardPessoa } from "../../components/CardPessoa";
+import { listar } from "../../services/serviceApi";
+import { styles } from "./style";
 
 export const PessoaPage = () => {
   const [info, setInfo] = useState<DataCardPage[]>([]);

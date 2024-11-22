@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { PostDataUser, PropsUserLogin } from "../@types/api";
-import { useNavigation } from "@react-navigation/native";
-import { Alert } from "react-native";
-import { buscar } from "../services/serviceApiUser";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { createContext, useContext, useEffect, useState } from "react";
+import { Alert } from "react-native";
+import { PostDataUser } from "../@types/api";
+import { buscar } from "../services/serviceApiUser";
 
 type PropsContext = {
   usuario: PostDataUser;
