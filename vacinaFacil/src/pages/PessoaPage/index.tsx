@@ -28,6 +28,7 @@ export const PessoaPage = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <View style={{paddingBottom: 50}}>
       <View style={styles.banner}>
         <ImageBackground
           source={banner}
@@ -44,6 +45,7 @@ export const PessoaPage = () => {
       <FlatList
         data={info}
         keyExtractor={(info) => info.id}
+        scrollEnabled={false}
         renderItem={({ item }) => (
           <CardPessoa
             bairro={item.bairro}
@@ -59,6 +61,7 @@ export const PessoaPage = () => {
           />
         )}
       />
+      </View>
     </ScrollView>
   );
 };

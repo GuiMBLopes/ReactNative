@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import { styles } from "./style";
 import { Picker } from "@react-native-picker/picker";
@@ -77,6 +78,7 @@ export const CadastroUser = () => {
   return (
     <>
       <Header />
+      <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center', backgroundColor:'#247BA0'}} behavior="padding" enabled   keyboardVerticalOffset={10}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View style={styles.container}>
           <View style={styles.formContainer}>
@@ -92,18 +94,21 @@ export const CadastroUser = () => {
               placeholder="Data de nascimento (DD/MM/AAAA)"
               value={form.dataNascimento}
               onChangeText={(text) => handleInputChange("dataNascimento", text)}
+              maxLength={10}
             />
             <TextInput
               style={styles.input}
               placeholder="CPF (000.000.000-00)"
               value={form.cpf}
               onChangeText={(text) => handleInputChange("cpf", text)}
+              maxLength={14}
             />
             <TextInput
               style={styles.input}
-              placeholder="Telefone ((99) 99999-9999)"
+              placeholder="Telefone (99) 99999-9999"
               value={form.telefone}
               onChangeText={(text) => handleInputChange("telefone", text)}
+              maxLength={15}
             />
             <TextInput
               style={styles.input}
@@ -131,6 +136,7 @@ export const CadastroUser = () => {
           </View>
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </>
   );
 };

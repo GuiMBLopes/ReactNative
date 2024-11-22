@@ -7,7 +7,6 @@ export const inserir = async (data: PostData) => {
       "https://6722c0392108960b9cc576fc.mockapi.io/vacina",
       data
     );
-    console.log("Respota da API", response.data);
   } catch (error) {
     console.error("Erro ao fazer o POST", error);
   }
@@ -76,7 +75,6 @@ export const deletarApi = async (id: string) => {
     const response = await axios.delete(
       `https://6722c0392108960b9cc576fc.mockapi.io/vacina/${id}`
     );
-    console.log("Deletou");
   } catch (error) {
     console.log("Erro ao fazer o Delete", error);
   }

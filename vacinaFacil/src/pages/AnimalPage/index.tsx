@@ -1,4 +1,4 @@
-import { FlatList, Image, Text, View } from "react-native";
+import { FlatList, Image, ScrollView, Text, View } from "react-native";
 import { style } from "./style";
 import { Icon } from "react-native-elements";
 import { DataCardPage } from "../../@types/api";
@@ -19,27 +19,30 @@ export const AnimalPage = () => {
   }, []);
 
   return (
-    <>
+    <ScrollView>
       <View style={style.container}>
-        <FlatList
-          data={info}
-          keyExtractor={(info) => info.id}
-          renderItem={({ item }) => (
-            <CardAnimal
-              bairro={item.bairro}
-              dataFim={item.dataFim}
-              dataInicio={item.dataInicio}
-              descricao={item.descricao}
-              horaFim={item.horaFim}
-              horaInicio={item.horaInicio}
-              id={item.id}
-              numero={item.numero}
-              rua={item.rua}
-              tipo={item.tipo}
-            />
-          )}
-        />
+        <View style={{ width: "80%" }}>
+          <FlatList
+            scrollEnabled={false}
+            data={info}
+            keyExtractor={(info) => info.id}
+            renderItem={({ item }) => (
+              <CardAnimal
+                bairro={item.bairro}
+                dataFim={item.dataFim}
+                dataInicio={item.dataInicio}
+                descricao={item.descricao}
+                horaFim={item.horaFim}
+                horaInicio={item.horaInicio}
+                id={item.id}
+                numero={item.numero}
+                rua={item.rua}
+                tipo={item.tipo}
+              />
+            )}
+          />
+        </View>
       </View>
-    </>
+    </ScrollView>
   );
 };

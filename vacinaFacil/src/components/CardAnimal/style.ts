@@ -1,21 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor:"#247BA0",
-        justifyContent:"center",
-        alignItems:"center",
-        paddingTop:20,
-    },
     card:{
+        justifyContent: 'space-evenly',
         backgroundColor:"#FFF",
-        width:"90%",
+        width:"100%",
         height:200,
         borderRadius:10,
-        display:"flex",
         elevation: 8,
-        marginBottom:10
+        marginBottom:15,
+        paddingBottom: 20
     },
     cardText:{
         width:"80%"
@@ -30,25 +24,24 @@ export const style = StyleSheet.create({
     subTitle:{
         fontSize:15,
         paddingLeft:20,
-        paddingBottom:10,
         fontFamily:"Nunito",
         fontWeight:"bold"
     },
     local:{
         width:"90%",
         flexDirection:"row",
-        paddingLeft:10
+        paddingLeft:10,
 
     },
     localText:{
-        fontSize:20,
+        fontSize:17,
         color:"#1B98E0",
-        fontWeight:"bold"
+        
     },
     row:{
         flexDirection:"row",
         top:15,
-        justifyContent:"space-between"
+        justifyContent:"space-between",
     },
     rowDate:{
         width:"60%",

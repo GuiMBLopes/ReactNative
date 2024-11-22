@@ -3,32 +3,43 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import Logo from "../../assets/Logo.png";
 import { style } from "./style";
+import { useAuth } from "../../hooks/useAuth";
 
-export const Header = () => {
+interface PropsHeader {
+  propsAdm?: boolean;
+}
+
+export const Header = ({propsAdm = false}:PropsHeader) => {
+  const { usuario, logout } = useAuth(); 
   const navigate = useNavigation();
- 
-  const navigateToCasdastroLocal = () => adm ? navigate.navigate("StackCadastroLocal") : "";
 
   const navigateToBack = () => {
-    navigate.navigate("Home")
-  }
-  
-  const adm = true;
+    navigate.navigate("Home");
+  };
 
+  const HandleClick = () => {logout()};
   return (
     <View style={style.container}>
-      <TouchableOpacity style={{ top: 17 }} onPress={navigateToBack}>
-        <Icon
-          name="chevron-back-outline"
-          type="ionicon"
-          size={50}
-          color={"#fff"}
-        />
-      </TouchableOpacity>
-      <View style={{flexDirection:"row", left:60}}>
-        <Text style={{color:"#fff", top:30, paddingRight:5}}>Vacina Facil</Text>
+      <View style={style.boxItem}>
+        <TouchableOpacity style={{ width: "100%" }} onPress={navigateToBack}>
+          <Icon
+            name="chevron-back-outline"
+            type="ionicon"
+            size={50}
+            color={"#fff"}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={style.boxItem}>
         <Image source={Logo} style={style.logo} />
       </View>
+      {propsAdm === true && (
+      <View style={style.boxItem}>
+        <TouchableOpacity style={style.button} onPress={HandleClick}>
+          <Text style={style.text}>Sair</Text>
+        </TouchableOpacity>
+      </View>
+      )}
     </View>
   );
 };

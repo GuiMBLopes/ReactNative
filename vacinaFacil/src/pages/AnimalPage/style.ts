@@ -6,7 +6,7 @@ export const style = StyleSheet.create({
         backgroundColor:"#247BA0",
         justifyContent:"center",
         alignItems:"center",
-        paddingTop:20
+        paddingTop:50
     },
     card:{
         backgroundColor:"#FFF",

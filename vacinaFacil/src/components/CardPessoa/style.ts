@@ -1,19 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  containerCards: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-
   cards: {
     backgroundColor: "#fff",
     padding: 15,
     borderRadius: 12,
     elevation: 8,
     marginHorizontal: 20,
-    marginBottom: 15,
     overflow: "hidden",
+    marginBottom: 20
   },
 
   cardsInfos: {
@@ -58,16 +53,27 @@ export const styles = StyleSheet.create({
     color: "#000",
     flex: 1,
     marginRight: 10,
+    width:'60%'
   },
 
   horario: {
     fontSize: 13,
     color: "#000",
     flex: 1,
-    textAlign: "right",
+  },
+  boxData:{
+    width: '50%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10
   },
 
-  icon: {
-    marginRight: 5,
-  },
+  boxHora:{
+    width: '40%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+  }
 });
