@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Keyboard, TouchableWithoutFeedback, View, Image, Text, TouchableOpacity, Alert } from "react-native";
+import { Keyboard, TouchableWithoutFeedback, View, Image, Text, TouchableOpacity, Alert, ScrollView, KeyboardAvoidingView } from "react-native";
 import { styles } from "./style";
 import Logo from "../../assets/Logo.png";
 import { TextInputField } from "../../components/TextInput";
@@ -32,7 +32,8 @@ export const Login = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
+      <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center', backgroundColor:'#247BA0'}} behavior="padding" enabled   keyboardVerticalOffset={10}>
+      <ScrollView style={{backgroundColor: '#247BA0'}}>
       <View style={styles.container}>
 
 
@@ -75,6 +76,8 @@ export const Login = () => {
         </View>
 
       </View>
+      </ScrollView>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   )
 }

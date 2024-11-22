@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import { styles } from "./style";
 import { Picker } from "@react-native-picker/picker";
@@ -77,6 +78,7 @@ export const CadastroUser = () => {
   return (
     <>
       <Header />
+      <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center', backgroundColor:'#247BA0'}} behavior="padding" enabled   keyboardVerticalOffset={10}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View style={styles.container}>
           <View style={styles.formContainer}>
@@ -134,6 +136,7 @@ export const CadastroUser = () => {
           </View>
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </>
   );
 };
