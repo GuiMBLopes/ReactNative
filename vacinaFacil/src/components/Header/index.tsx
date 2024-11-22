@@ -28,16 +28,16 @@ export const Header = () => {
       </View>
       <View style={style.boxItem}>
         <TouchableOpacity onPress={navigateToCasdastroLocal} style={{width: '100%'}}>
-            {usuario.nome
+            {!usuario.nome
               ? (
                 <>
-                 <Text style={style.text}>Seja bem vindo,</Text>
-                 <Text style={style.text}>{usuario.nome}</Text>
+                 <Text style={style.text}>Faça seu Login</Text>
                  </>
                 )
               : (
                 <>
-                 <Text style={style.text}>Faça seu Login</Text>
+                 <Text style={style.text}>Seja bem vindo,</Text>
+                 <Text style={style.text}>{usuario.nome}</Text>
                  </>
                 )}
           <Text style={style.text}>

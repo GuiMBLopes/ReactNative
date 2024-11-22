@@ -22,10 +22,10 @@ export const style = StyleSheet.create({
     height: 60,
     width: 60,
   },
+  
   text: {
-    width:115,
     color: "#FFF",
     fontSize: 12,
-    textAlign: 'center'
+    textAlign: 'center',
   },
 });

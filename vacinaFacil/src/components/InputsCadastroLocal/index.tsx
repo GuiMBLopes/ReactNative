@@ -7,6 +7,7 @@ interface PropsInput {
   handleFunctionInput?: (value: string) => void;
   label?: string;
   tamanhoDigito?: number;
+  handleFunction?: () => void;
 }
 
 export const InputsCadastroLocal = ({
@@ -15,6 +16,7 @@ export const InputsCadastroLocal = ({
   handleFunctionInput,
   label,
   tamanhoDigito,
+  handleFunction,
 }: PropsInput) => {
   return (
     <View style={styles.boxInputText}>
@@ -27,6 +29,7 @@ export const InputsCadastroLocal = ({
         placeholderTextColor="#0000007d"
         multiline={true}
         maxLength={tamanhoDigito}
+        onFocus={handleFunction}
       />
     </View>
   );
