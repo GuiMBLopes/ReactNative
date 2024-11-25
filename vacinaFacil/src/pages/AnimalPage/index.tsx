@@ -1,10 +1,9 @@
-import { FlatList, Image, ScrollView, Text, View } from "react-native";
-import { style } from "./style";
-import { Icon } from "react-native-elements";
-import { DataCardPage } from "../../@types/api";
 import { useEffect, useState } from "react";
+import { FlatList, ScrollView, View } from "react-native";
+import { DataCardPage } from "../../@types/api";
 import { CardAnimal } from "../../components/CardAnimal";
 import { listar } from "../../services/serviceApi";
+import { style } from "./style";
 
 export const AnimalPage = () => {
   const [info, setInfo] = useState<DataCardPage[]>([]);
@@ -19,7 +18,7 @@ export const AnimalPage = () => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: '#247BA0'}}>
       <View style={style.container}>
         <View style={{ width: "80%" }}>
           <FlatList
@@ -45,4 +44,4 @@ export const AnimalPage = () => {
       </View>
     </ScrollView>
   );
-};
+}

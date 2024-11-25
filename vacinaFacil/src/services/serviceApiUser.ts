@@ -1,6 +1,5 @@
 import axios from "axios";
 import { PostDataUser } from "../@types/api";
-import { Alert } from "react-native";
 
 export const buscar = async () => {
   try {
@@ -22,5 +21,15 @@ export const inserir = async (data: PostDataUser) => {
     );
   } catch (error) {
     console.error("Erro ao fazer o POST", error);
+  }
+};
+
+export const deletarUsuario = async (id: string) => {
+  try {
+    const response = await axios.delete(
+      `https://673e07880118dbfe8609d916.mockapi.io/usuario/${id}`
+    );
+  } catch (error) {
+    console.log("Erro ao fazer o Delete", error);
   }
 };

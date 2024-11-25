@@ -1,11 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Image, Text, View } from "react-native";
-import { AnimalPage } from "../../pages/AnimalPage";
-import { Header } from "../../components/Header";
-import { Icon } from "react-native-elements";
+import { View } from "react-native";
 import { Footer } from "../../components/Footer";
-import { PessoaPage } from "../../pages/PessoaPage";
+import { Header } from "../../components/Header";
+import { AnimalPage } from "../../pages/AnimalPage";
 import Home from "../../pages/Home";
+import { PessoaPage } from "../../pages/PessoaPage";
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +52,7 @@ export const TabRoutes = () => {
         name="animal"
         component={AnimalPage}
         options={{
-          tabBarIcon: ({ focused, size }) => (
+          tabBarIcon: ({ focused }) => (
             <View style={{ flexDirection: "row" }}>
               <Footer IconName="paw-sharp" IconType="ionicon" Name="animal" Focus={focused}/>
             </View>

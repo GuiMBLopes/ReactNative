@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 
+import { useNavigation } from "@react-navigation/native";
 import {
-  View,
+  KeyboardAvoidingView,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
-  Image,
-  ScrollView,
-  KeyboardAvoidingView
+  View
 } from "react-native";
-import { styles } from "./style";
-import { Picker } from "@react-native-picker/picker";
 import { Header } from "../../components/HeaderCadastro";
 import { inserir } from "../../services/serviceApiUser";
-import { useNavigation } from "@react-navigation/native";
+import { styles } from "./style";
 
 export const CadastroUser = () => {
   const [tipo, setTipo] = useState("Pessoa");
@@ -56,10 +54,40 @@ export const CadastroUser = () => {
   };
 
   const handleSubmit = () => {
+
+    if (form.nome === "") {
+      alert("O campo nome está vazio")
+      return
+    }
+    if (form.cpf === "") {
+      alert("O campo cpf está vazio")
+      return
+    }
+    if (form.email === "") {
+      alert("O campo email está vazio")
+      return
+    }
+    if (form.telefone === "") {
+      alert("O campo telefone está vazio")
+      return
+    }
+    if (form.dataNascimento === "") {
+      alert("O campo dataNascimento está vazio")
+      return
+    }
+    if (form.senha === "") {
+      alert("O campo senha está vazio")
+      return
+    }
+    if (form.nome === "") {
+      alert("O campo confirma senha está vazio")
+      return
+    }
     if (form.senha !== form.confirmarSenha) {
       alert("As senhas não coincidem!");
       return;
     }
+
 
     const user = {
       nome: form.nome,

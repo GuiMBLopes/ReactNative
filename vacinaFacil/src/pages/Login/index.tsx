@@ -1,12 +1,11 @@
-import { useState } from "react";
-import { Keyboard, TouchableWithoutFeedback, View, Image, Text, TouchableOpacity, Alert, ScrollView, KeyboardAvoidingView } from "react-native";
-import { styles } from "./style";
-import Logo from "../../assets/Logo.png";
-import { TextInputField } from "../../components/TextInput";
-import { ButtonType } from "../../components/ButtonType";
-import { buscar } from "../../services/serviceApiUser";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { Alert, Image, Keyboard, KeyboardAvoidingView, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import Logo from "../../assets/Logo.png";
+import { ButtonType } from "../../components/ButtonType";
+import { TextInputField } from "../../components/TextInput";
 import { useAuth } from "../../hooks/useAuth";
+import { styles } from "./style";
 
 
 export const Login = () => {
@@ -14,7 +13,7 @@ export const Login = () => {
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigation ()
-  const {setUsuario, comparar} = useAuth();
+  const {comparar} = useAuth();
 
   const handleLogin = () => {
   comparar(email, password)
