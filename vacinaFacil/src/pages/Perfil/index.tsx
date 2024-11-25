@@ -5,6 +5,7 @@ import { ModalComponent } from "../../components/ModalComponent";
 import { useAuth } from "../../hooks/useAuth";
 import { deletarUsuario } from "../../services/serviceApiUser";
 import { styles } from "./style";
+import { Header } from "../../components/HeaderCadastro";
 
 export default function Perfil() {
   const { usuario, logout } = useAuth();
@@ -35,6 +36,8 @@ export default function Perfil() {
   };
 
   return (
+    <>
+    <Header/>
     <View style={styles.container}>
       {/* Avatar */}
       <View style={styles.avatarContainer}>
@@ -81,5 +84,6 @@ export default function Perfil() {
         modalFunction={excluir}
       />
     </View>
+    </>
   );
 }

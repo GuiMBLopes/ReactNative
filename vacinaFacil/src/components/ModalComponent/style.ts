@@ -2,17 +2,16 @@ import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
     container:{
-        backgroundColor:"#13293D",
-        width:"100%",
-        height:"30%",
-        justifyContent:"center",
+        flex:1,
+        justifyContent:"flex-end",
         borderRadius:15,
-        top:600
     },
     card:{
+        height:"30%",
         width:"100%",
         alignContent:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+        backgroundColor:"#13293D",
     },
     row:{
         flexDirection:"row",
